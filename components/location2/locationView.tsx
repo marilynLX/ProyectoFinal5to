@@ -30,7 +30,6 @@ export function LocationView() {
                 }
             }
         }
-
         getCurrentLocation();
     }, [permission]);
 
@@ -59,7 +58,6 @@ export function LocationView() {
             </View>
         );
     }
-
     return(
         <View style={styles.container}>
             <View style={styles.locationContainer}>
@@ -71,7 +69,6 @@ export function LocationView() {
                     </Text>
                 )}
             </View>
-
             <MapView 
             style={styles.map}
             ref={mapRef}
@@ -93,7 +90,7 @@ export function LocationView() {
             <View style={styles.button}>
                 <Button
                     title="Historial"	
-                    onPress={() => router.push("/history")}
+                    onPress={() => router.push("./history")}
                 />
             </View>
         </View>

@@ -3,11 +3,9 @@ import { PermissionLayout } from "./permissionLayout";
 
 
 export function CameraPermissions(){
-    
     const [permission, requestPermission] = useCameraPermissions();
    
     console.log(permission);
-
     return(
      <PermissionLayout
       icon="camera"

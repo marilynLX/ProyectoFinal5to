@@ -5,7 +5,6 @@ import { useEffect, useRef, useState } from "react";
 import { CharactersResult } from "./characterResult";
 import { DataSource } from "./dataSource";
 
-
 export function CharactersScrollView(){
     //estado para los datos
     const [loading, setLoading] = useState(false)
@@ -20,38 +19,19 @@ export function CharactersScrollView(){
         },
         results: [],
     });
-
     const FlatListRef  =  useRef(null);
-
     const dataSource = new DataSource();
-
-    
-
-const hundleEndReached = () => {
-    {/*si no hay pagina siguiente o esta cargando no cargar nada
-    //caaso contrario ingrementar pagina
-
-    if(data.info.next || loading){
-        return;
-    }
-    setPage(page + 1);
-*/}
-    //forma 2
+    const hundleEndReached = () => {
     if(data.info.next && !loading){
         setPage(page + 1);
     }
-    
 }
-
-
     //cada vez que cambie el numero de pagina, cargar los personajes
     useEffect(() => {
         setLoading(true);
-
         dataSource.getCharacters(page)
         .then((result) => {
             //para hacer un scroll infinito es conservar los personajes(concervar el estado actual)
-
             setData((prevData)=>({
                 results:[...prevData.results, ...result.results],
                 info: result.info,
@@ -66,33 +46,25 @@ const hundleEndReached = () => {
         //ToDo: catch
     }, [page]);
 
-  
-
     return( 
-
        <View style={style.scrollview}>
-
         <View style={style.pagginator}>
             <TouchableOpacity 
             onPress={()=> {setPage(page - 1)}}
             disabled={data.info.page === null}
             >
                 </TouchableOpacity>
-
-
 <View style={style.pagina}>
     <Text style={style.personaje}>Personajes</Text>
     <Text>{data.results.length}</Text>
     <Text>de</Text>
     <Text>{data.info.count}</Text>
 </View>
-
 <TouchableOpacity
                 onPress={()=> {setPage(page + 1)}}
                 disabled={data.info.page === null}
                 >
                 </TouchableOpacity>
-
                 </View> 
                 {loading ? (
                 <ActivityIndicator size = "large"/>
@@ -102,7 +74,6 @@ const hundleEndReached = () => {
             data={data.results}
             renderItem={({item}) => (
                 <CharacterCard character={item}/>
-                
             )}
             keyExtractor={item => item.id.toString()}
             //mandar a disparar una accion
@@ -113,17 +84,7 @@ const hundleEndReached = () => {
             //mandamos el spinner hasta el final
             ListFooterComponent={loading ? <ActivityIndicator size="large"/> 
                 : undefined}
-            />
- 
-            {/*{loading ? null : data.results.map((item) => (
-                <CharacterCard
-                    key={item.id}
-                    character={item}
-                /> 
-            ))*/
-            }
-
-           
+            />           
         </View>
     )
 }

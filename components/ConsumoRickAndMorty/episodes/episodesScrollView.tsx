@@ -4,8 +4,6 @@ import { Episodes } from "./episodesType";
 import { useEffect, useRef, useState } from "react";
 import { EpisodesResult } from "./episodesResult";
 import { EpisodeSource } from "./episodesSource";
-
-
 export function EpisodesScrollView(){
     //estado para los datos
     const [loading, setLoading] = useState(false)
@@ -20,24 +18,17 @@ export function EpisodesScrollView(){
         },
         results: [],
     });
-
     const FlatListRef  =  useRef(null);
-
     const dataSource = new EpisodeSource();
-
 const hundleEndReached = () => {
     if(data.info.next && !loading){
         setPage(page + 1);
     }
-    
 }
-
     useEffect(() => {
         setLoading(true);
-
         dataSource.getCharacters(page)
         .then((result) => {
-
             setData((prevData)=>({
                 results:[...prevData.results, ...result.results],
                 info: result.info,
@@ -50,25 +41,20 @@ const hundleEndReached = () => {
             setLoading(false);
         })
     }, [page]);
-
     return( 
-
        <View style={style.scrollview}>
-
         <View style={style.pagginator}>
             <TouchableOpacity 
             onPress={()=> {setPage(page - 1)}}
             disabled={data.info.page === null}
             >
             </TouchableOpacity>
-
 <View style={style.pagina}>
     <Text style={style.personaje}>Episodes</Text>
     <Text>{data.results.length}</Text>
     <Text>de</Text>
     <Text>{data.info.count}</Text>
 </View>
-
         <TouchableOpacity
                 onPress={()=> {setPage(page + 1)}}
                 disabled={data.info.page === null}

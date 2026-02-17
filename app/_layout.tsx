@@ -25,13 +25,10 @@ export default function RootLayout() {
   const colorScheme = useColorScheme();
 
   useEffect(() => {
-    // Verificar si hay una sesión guardada
     checkStoredSession();
-
-    // Suscribirse a cambios en el estado de autenticación
+  
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
-        // Guardar la sesión
         await AsyncStorage.setItem('userSession', JSON.stringify({
           uid: user.uid,
           email: user.email,
@@ -39,7 +36,6 @@ export default function RootLayout() {
         }));
         setIsLoggedIn(true);
       } else {
-        // Eliminar la sesión guardada
         await AsyncStorage.removeItem('userSession');
         setIsLoggedIn(false);
       }

@@ -15,7 +15,6 @@ export function NoteModal({
     onSaved,
     onClose,
 } : Props) {
-
     const [title, setTitle] = useState(note.title);
     const [text, setText] = useState(note.text);
 
@@ -32,7 +31,6 @@ export function NoteModal({
             text,
         });
     }
-
     return(
         <Modal
           animationType="slide"
@@ -51,7 +49,6 @@ export function NoteModal({
                         value={title}
                         onChangeText={setTitle}
                     />
-
                     <TextInput
                         placeholder="Contenido de la nota"
                         placeholderTextColor="#666"
@@ -61,7 +58,6 @@ export function NoteModal({
                         value={text}
                         onChangeText={setText}
                     />
-
                     <View style={styles.buttonContainer}>
                         <TouchableOpacity
                             style={[styles.button, styles.saveButton]}

@@ -74,7 +74,7 @@ export function HistoryView() {
                 />
             </View>
             <View style={styles.button}>
-                <Button title="Regresar" onPress={() => router.push("/ubication/index")} />
+                <Button title="Regresar" onPress={() => router.push("./ubication/index")} />
             </View>
         </View>
     );

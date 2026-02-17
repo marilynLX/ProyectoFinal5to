@@ -16,19 +16,16 @@ export function ImagePicker() {
         setCameraOpen(false);
         setImage(uri);
     };
-
     const onNewPicture = () => {
         setImage(undefined);
         setCameraOpen(true);
     };
-
     const onSavePhoto = (uri: string) => {
         setImages([...images, uri]);
         Alert.alert("Foto guardada.");
         setOpen(false);
         setImage(undefined);
     };
-
     const pickImage = async () => {
         let result = await PhotoPicker.launchImageLibraryAsync({
             mediaTypes: PhotoPicker.MediaTypeOptions.Images,
@@ -36,13 +33,11 @@ export function ImagePicker() {
             aspect: [4, 3],
             quality: 1,
         });
-
         if (!result.canceled) {
             setSelectedImage(result.assets[0].uri); // Guardar la imagen seleccionada para previsualizarla
             setOpen(false); // Cerrar el modal principal
         }
     };
-
     const saveSelectedImage = () => {
         if (selectedImage) {
             setImages([...images, selectedImage]);
@@ -50,7 +45,6 @@ export function ImagePicker() {
             setSelectedImage(null);
         }
     };
-
     const renderMenu = (
         <Modal visible={open} transparent={true} animationType="slide">
             <View style={styles.modalOverlay}>
@@ -70,7 +64,6 @@ export function ImagePicker() {
             </View>
         </Modal>
     );
-
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={() => setOpen(true)}>

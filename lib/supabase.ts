@@ -5,15 +5,12 @@ const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZS
 
 export const supabase = createClient(supabaseUrl, supabaseKey)
 
-// Tipo que coincide exactamente con tu tabla en Supabase
 export interface Note {
   id: number;
   title: string;
   text: string;
   date: string;
 }
-
-// Funciones simples para interactuar con la tabla
 export const notesApi = {
   async getNotes() {
     const { data, error } = await supabase

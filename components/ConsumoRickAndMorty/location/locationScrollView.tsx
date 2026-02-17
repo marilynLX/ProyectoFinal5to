@@ -20,11 +20,8 @@ export function LocationScrollView(){
         },
         results: [],
     });
-
     const FlatListRef  =  useRef(null);
     const dataSource = new LocationSource();
-
-    
 const hundleEndReached = () => {
     if(data.info.next && !loading){
         setPage(page + 1);
@@ -48,9 +45,7 @@ const hundleEndReached = () => {
         })
     }, [page]);
 
-
     return( 
-
        <View style={style.scrollview}>
 
         <View style={style.pagginator}>

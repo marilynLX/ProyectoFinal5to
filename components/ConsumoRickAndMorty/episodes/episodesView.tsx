@@ -20,7 +20,6 @@ export function EpisodesView(){
         },
         results: [],
     });
-
     const dataSource = new EpisodeSource();
 
     //cada vez que cambie el numero de pagina, cargar los personajes
@@ -39,9 +38,6 @@ export function EpisodesView(){
         })
         //ToDo: catch
     }, [page]);
-
-  
-
     return( 
 
        <View style={style.scrollview}>
@@ -59,7 +55,6 @@ export function EpisodesView(){
     <Text>de</Text>
     <Text>{data.info.pages}</Text>
 </View>
-
 <TouchableOpacity
                 style={style.button}
                 onPress={()=> {setPage(page + 1)}}

@@ -10,6 +10,15 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import Octicons from '@expo/vector-icons/Octicons';
 
 
+const HomeIcon = () => (
+  <Octicons name="person-fill" size={24} color="aqua" />
+);
+
+const ScrollIcon = ({ color }: { color: string }) => (
+  <IconSymbol size={28} name="paperplane.fill" color={color} />
+);
+
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -32,14 +41,14 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <Octicons name="person-fill" size={24} color="aqua" />,
+          tabBarIcon: HomeIcon,
         }}
       />
       <Tabs.Screen
         name="CharactersScroll"
         options={{
           title: 'Scroll',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ScrollIcon,
         }}
       />
     </Tabs>

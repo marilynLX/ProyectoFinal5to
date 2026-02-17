@@ -1,5 +1,4 @@
 //creamos nuevo archivo index.tsx
-import { View } from "react-native";
 import { CharactersView } from "@/components/ConsumoRickAndMorty/characters/charactersView";
 
 //pantalla para los personajes
